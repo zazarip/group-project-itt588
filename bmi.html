@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<link rel='stylesheet' href='stylebmi.css'/>
+		<title>BMI Calculator</title>
+	</head>
+<body>
+<script type="text/javascript">
+		function BMI() {
+			var h=document.getElementById('h').value;
+			var w=document.getElementById('w').value;
+		if(h == null || h == "")
+		{
+			alert("Height can't be blank");
+			return false;
+		}
+		else if (isNaN (h))
+		{
+			alert("Height must a number");
+			return false;
+		}
+		else if (w == null || w == "")
+		{
+			alert("Weight can't be blank");
+			return false;
+		}
+		else if (isNaN (w))
+		{
+			alert("Weight must a number");
+			return false;
+		}
+			var BMI=(w / ((h * h)/ 10000)).toFixed(2);
+			
+	if(BMI < 18.5){
+		document.getElementById("result").innerHTML="Your BMI is " + BMI+
+		"<br>Your BMI falls within the underweight range<br>Health risk: Malnutrition risk";
+    }else if((BMI > 18.4) && (BMI < 25)){
+		document.getElementById("result").innerHTML="Your BMI is " + BMI+
+		"<br>Your BMI falls within the normal weight range<br>Health risk: Low risk";
+    }else if((BMI > 24) && (BMI < 30 )){
+        document.getElementById("result").innerHTML="Your BMI is " + BMI+
+		"<br>Your BMI falls within the overweight range<br>Health risk: Enhanced risk";
+    }else if((BMI > 29) && (BMI < 35)){
+        document.getElementById("result").innerHTML="Your BMI is " + BMI+
+		"<br>Your BMI falls within the moderately obese weight range<br>Health risk: Medium risk";
+    }else if((BMI > 34) && (BMI < 40 )){
+        document.getElementById("result").innerHTML="Your BMI is " + BMI+
+		"<br>Your BMI falls within the severely obese range<br>Health risk: High risk"; 
+	}else{
+        document.getElementById("result").innerHTML="Your BMI is " + BMI+
+		"<br>Your BMI falls within the very severely obese range<br>Health risk: Very High risk";
+    }
+		}
+		// Reload Page
+		function repeatTask(){
+		if (confirm('Do you want to continue?')) {
+		window.location.reload();
+		} else {
+		window.close();
+		}};
+	
+</script>
+		<div>
+			<h2>BMI Calculator</h2>
+			<p class="text">Height</p>
+			<input type="text" id="h">
+			<p class="text">Weight</p>
+			<input type="text" id="w">
+			<p id="result"></p>
+			<button id="btn" onClick="BMI()">Calculate</button>
+			<button id="btn" onClick="repeatTask()">Clear</button>
+			<p id="info">Please enter height [cm] and weight [kg]</p>
+			<p id="info"><a href="about.html">About Us</a></p>
+		</div>
+	</body>
+</html>
